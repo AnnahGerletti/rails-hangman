@@ -1,0 +1,19 @@
+<h1> Do you Want to play Hangman </h1>
+
+<div>
+  - 5 lives to guess the word<br>
+  - The SECRET will revile its self when you guess correctly <br>
+  - Have fun
+</div>
+
+<div>
+  <h3> Enter your Name and Let's Play </h3>
+    <%= form_with scope: :game, model: @game, local: true do |form| %>
+  <%= form.text_field :name %>
+  <%= form.submit 'Start Game' %>
+  <% end %>
+
+</div>
+
+
+<%# #There might be a problem with the form and where the start game button calls and sends you. Becuase its sending you to the guesses controller.  %>

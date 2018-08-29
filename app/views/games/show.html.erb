@@ -1,0 +1,25 @@
+
+ 
+<div>
+  <h2>Hey <%= @game.name%>, lets play Hangman </h2>
+  <strong>Lives Left: <%= lives_left %></strong>
+</div>
+
+<div>
+  <span>
+   <h4>The Secret </h4>
+    <%= dashes %>
+  </span>
+</div>
+
+<div>
+  <h4>Make a guess </h4>
+  <%= render 'guesses/new' %>
+</div>
+
+<div>
+  <%= render 'guesses/index'%>
+</div>
+
+<%# <div>
+  <% won? %>
