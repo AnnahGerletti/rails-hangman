@@ -1,0 +1,5 @@
+  <%= form_with model: [@game, Guess.new], local: true do |form| %>
+  <%= form.text_field :guess %>
+  <%= form.submit 'Submit Guess' %>
+  <% end %>
+

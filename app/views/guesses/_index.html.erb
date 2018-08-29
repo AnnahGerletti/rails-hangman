@@ -1,0 +1,16 @@
+<h4> Past Guesses </h4>
+
+: <% @game.guesses.each do |guess| %>
+ <%= guess.guess %>
+ <% if @game.word.word.include?(guess.guess)%>
+      +
+      <% else %>
+      -
+      <% end %>
+      ,
+<% end %>
+
+
+
+
+

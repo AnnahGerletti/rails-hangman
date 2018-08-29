@@ -1,0 +1,30 @@
+
+<h1>HangMan</h1>
+<%= form_with scope: :word, model: @word, local: true do |form| %>
+<div>
+<h3> Add a word to the Hang Man Game. </h3>
+  <%= form.text_field :word %>
+</div>
+<div>
+  <%= form.submit %>
+</div>
+<% end %>
+
+<div>
+<h2>List of Words</h2>
+    <table>
+        <tr>
+        <th>Word</th>  
+        </tr>  
+        <% @words.each do |word| %>
+            <tr>
+                <td><%= word.word %></td>
+                <td><%= link_to "delete", word_path(word), :method => :delete, :data => {:confirm => "Are you sure you want to delete?"} %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>
+
+<%= link_to 'Go To Game Page', new_game_path %>
+
+
