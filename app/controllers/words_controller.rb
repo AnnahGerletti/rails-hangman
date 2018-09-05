@@ -26,11 +26,4 @@ class WordsController < ApplicationController
 
 end
 
-  # def create
-  #   @article = Article.new(article_params)
-  #   @article.save
-  #   redirect_to articles_index_path
-  # end
-  # def article_params
-  #   params.require(:article).permit(:title, :text)
-  # end
+

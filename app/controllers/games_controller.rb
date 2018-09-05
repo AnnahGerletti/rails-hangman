@@ -6,9 +6,12 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_parmas)
     @game.word = randomly_choose_word
-    @game.lives = 5
-    @game.save
-    redirect_to game_path(@game)
+    @game.lives = 6
+     if @game.save
+      redirect_to game_path(@game)
+     else
+      render :new
+     end
   end
 
   def show
@@ -21,20 +24,16 @@ class GamesController < ApplicationController
     @word = words.sample
   end
 
-
-  # I want to compaire the guess to the saved word
-  # id the specific game 
-  # need all the guess 
-  # if else guesses compaired to word 
   def check_guess_against_secret
     @game.guesses.each do |guess|
-    @game.word.word.includes?( ss)
+      @game.word.word.includes?(guess)
+    end
   end
-end
+
 
   private 
 
   def game_parmas
-    params.require(:game).permit(:name, :word_id, :lives, )
+    params.require(:game).permit(:name, :word_id, :lives)
   end
 end

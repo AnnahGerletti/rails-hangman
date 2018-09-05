@@ -10,7 +10,14 @@ class GuessesController < ApplicationController
   def create 
     @game = Game.find(params[:game_id])
     @guess = @game.guesses.create(guess_params)
-    redirect_to @game
+    if @guess.id
+      redirect_to @game
+    else
+      flash[:notice] = "Please enter single letters only"
+      #an alert message
+      redirect_to @game
+      #refreshes the page 
+    end
   end
 
 
@@ -21,7 +28,3 @@ class GuessesController < ApplicationController
 
 
 end
-
-#Why does hiting New game button, it take you to the guess controller and not the game contreoller
-#Find some literature that explains when tables belong to other tables
-#Create needs a redirect to show all the guess letters, then it needs some logic that 
