@@ -8,6 +8,10 @@ module GamesHelper
       end
     end.join(' ')
   end
+  
+  def show_word
+    @game.word.word if lost?
+  end
 
   def lives_left
     lives = @game.lives 
@@ -17,24 +21,44 @@ module GamesHelper
         lives = lives - 1
       end
     end
-   lives
+    lives
+  end
+
+  def lost? 
+    lives_left.zero?
+  end
+
+  def won?
+    # access game db and save false in the won loss column
+    # change the db boolean from loss to won 
+    secret = @game.word.word
+    guess = @game.guesses.pluck(:guess)
+
+    secret.chars.map.all? do |char|
+      guess.include?(char)
+    end
   end
 
 
-   def lost? 
-    lives_left.zero?
-   end
-  # def lives_countergame
-  #   if @game.guesses! 
-  # end
+  def game_output
+    if lost?
+      'Game Over'
+    elsif won?  
+      "Congratulations You WIN!!!"
+    else
+      "Keep Guessing"
+    end
+  end
 
-
-  #  def won?
-  #   @game.word.word.all? do |char|
-  #     @game.guesses.map(&:guess).include?(char)
-  #   end
-  # end
-
+  def new_game
+    # askes if want to play again
+    # starts the game over again
+    # hits the create method
+    # keeps same name, but new instance of game id, new word and new guesses 
+    # add a link when the game is over back to start game page
+    # sessions LOOK UP 
+    # pass it the same information have to build it differently, needs the same infor the current game already has 
+  end
 
 end
 

@@ -8,7 +8,12 @@
 <div>
   <span>
    <h4>The Secret </h4>
-    <%= dashes %>
+   <% if lost? %>
+      <%= show_word %>
+    <% else %>
+      <%= dashes %>
+    <% end %>
+    
   </span>
 </div>
 
@@ -21,5 +26,7 @@
   <%= render 'guesses/index'%>
 </div>
 
-<%# <div>
-  <% won? %>
+<div>
+  <strong><%= game_output %> </strong> <br>
+  
+</div>
