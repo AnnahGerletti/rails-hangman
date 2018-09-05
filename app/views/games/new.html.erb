@@ -1,17 +1,22 @@
 <h1> Do you Want to play Hangman </h1>
 
 <div>
-  - 5 lives to guess the word<br>
+  - 6 lives to guess the word<br>
   - The SECRET will revile its self when you guess correctly <br>
   - Have fun
 </div>
 
 <div>
   <h3> Enter your Name and Let's Play </h3>
-    <%= form_with scope: :game, model: @game, local: true do |form| %>
+  <%= form_with scope: :game, model: @game, local: true do |form| %>
+  
+  <%= render 'errors' %>
+
   <%= form.text_field :name %>
   <%= form.submit 'Start Game' %>
   <% end %>
+
+
 
 </div>
 

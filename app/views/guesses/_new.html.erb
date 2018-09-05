@@ -1,5 +1,11 @@
-  <%= form_with model: [@game, Guess.new], local: true do |form| %>
+  <%= form_with model: [@game, Guess.new], local: false do |form| %>
   <%= form.text_field :guess %>
   <%= form.submit 'Submit Guess' %>
   <% end %>
 
+
+ <% flash.each do |name,msg| %>
+  <ul>
+  <li><%= msg %></li>
+  </ul>
+<% end %>
