@@ -1,0 +1,8 @@
+g1: 
+  id: 1
+  word_id: 1
+  lives: 2
+  won_loss: nil
+  name: "bob"
+
+  

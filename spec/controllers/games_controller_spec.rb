@@ -1,6 +1,8 @@
 require 'rails_helper'
 
+
 RSpec.describe GamesController do 
+fixtures :games, :guesses, :words
 
   describe "GET #new" do
       it 'creates a new game' do 
@@ -53,5 +55,20 @@ RSpec.describe GamesController do
       end
     end
   end
+
+describe "GET show"
+  context "when it shows games" do 
+    it " game does exist" do
+      
+      get :show, params: {:id => 1}
+      expect(response).to have_http_status(200)
+      expect(response).to render_template(:show)
+    end
+    it " doesn't exist "do 
+      get :show, params: {:id => 2}
+      expect(response.status).to eq(404)
+    end
+  end
 end
+
 
