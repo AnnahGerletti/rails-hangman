@@ -19,21 +19,24 @@ class GamesController < ApplicationController
     # redirect_to game_guess_path(@game.guesses)
   end
 
-  def randomly_choose_word
-    words = Word.all
-    @word = words.sample
-  end
-
+  
+  
+  private 
+  # don't need to test private methods
+  # make sure they are only used in the controller 
+  
   def check_guess_against_secret
     @game.guesses.each do |guess|
       @game.word.word.includes?(guess)
     end
   end
 
-
-  private 
-
   def game_parmas
     params.require(:game).permit(:name, :word_id, :lives)
+  end
+
+  def randomly_choose_word
+    words = Word.all
+    @word = words.sample
   end
 end
