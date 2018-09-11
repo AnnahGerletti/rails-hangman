@@ -4,7 +4,7 @@ guess1:
   guess: 'c'
 
 guess2: 
-  game_id: 1
   id: 2
+  game_id: 1
   guess: 'p'
   
