@@ -24,10 +24,9 @@ fixtures :games, :guesses, :words
       let (:new_game) {Game.create}
 
       it "redirects to show template on game path" do
-        params = {:game => {lives: 3, name: 'Ham'}}
         
         # def post(method, options)
-        post(:create, :params => params)
+        post(:create, :params =>{:game => {lives: 3, name: 'Ham'}})
         # had to specify the correct game_id to get to the game path (show)
         location = game_path(Game.last)
 
