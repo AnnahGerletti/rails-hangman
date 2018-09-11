@@ -25,11 +25,11 @@ class GamesController < ApplicationController
   # don't need to test private methods
   # make sure they are only used in the controller 
   
-  def check_guess_against_secret
-    @game.guesses.each do |guess|
-      @game.word.word.includes?(guess)
-    end
-  end
+  # def check_guess_against_secret
+  #   @game.guesses.each do |guess|
+  #     @game.word.word.includes?(guess)
+  #   end
+  # end
 
   def game_parmas
     params.require(:game).permit(:name, :word_id, :lives)

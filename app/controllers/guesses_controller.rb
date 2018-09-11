@@ -1,16 +1,17 @@
 class GuessesController < ApplicationController
-  def index
-    @guesses = Guess.all
-  end
+  #Not using Index or new, using game to access guess table, look at the forms see what model you are passing in.
+  # def index
+  #   @guesses = Guess.all
+  # end
   
-  def new 
-    @guess = Guess.new
-  end
+  # def new 
+  #   @guess = Guess.new
+  # end
 
   def create 
     @game = Game.find(params[:game_id])
-    @guess = @game.guesses.create(guess_params)
-    if @guess.id
+    @guess = @game.guesses.new(guess_params)
+    if @guess.save
       redirect_to @game
     else
       flash[:notice] = "Please enter single letters only"
