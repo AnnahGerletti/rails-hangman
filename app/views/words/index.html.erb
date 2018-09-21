@@ -1,5 +1,6 @@
 
 <h1>HangMan</h1>
+<%= flash[:notice] %>
 <%= form_with scope: :word, model: Word.new, local: true do |form| %>
 <div>
 <h3> Add a word to the Hang Man Game. </h3>

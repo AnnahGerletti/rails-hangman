@@ -15,14 +15,18 @@ class WordsController < ApplicationController
 
   def destroy
     @word = Word.find(params[:id])
-    @word.delete
-    redirect_to words_index_path
+    if @word.destroy
+      redirect_to words_index_path
+    else
+      flash[:notice] = 'Cannot delete last word'
+      redirect_to words_index_path
+    end
   end
 
 
   private 
   def word_params
-  params.require(:word).permit(:word)
+    params.require(:word).permit(:word)
   end
 
 end
