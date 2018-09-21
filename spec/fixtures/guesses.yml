@@ -1,10 +1,8 @@
 guess1:
-  id: 1
-  game_id: 1
+  game: g1
   guess: 'c'
 
-guess2: 
-  id: 2
-  game_id: 1
+guess2:  
+  game: g1
   guess: 'p'
   

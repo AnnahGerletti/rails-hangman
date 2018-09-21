@@ -1,8 +1,8 @@
 g1: 
-  id: 1
-  word_id: 1
+  word: 'computer'
   lives: 2
   won_loss: nil
   name: "bob"
-
+#refraine from hard code ids in the fixtrues
+#in rails there is a way to reference back to the relation
   
