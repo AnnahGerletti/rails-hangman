@@ -1,6 +1,6 @@
 module GamesHelper
   def dashes
-    @game.word.word.chars.map do |char|
+    @game.word.chars.map do |char|
       if @game.guesses.map(&:guess).include?(char)
         char
       else 
@@ -10,14 +10,14 @@ module GamesHelper
   end
   
   def show_word
-    @game.word.word if lost?
+    @game.word if lost?
   end
 
   def lives_left
     lives = @game.lives 
     
     @game.guesses.each do |guess|
-      if !(@game.word.word.include?(guess.guess))
+      if !(@game.word.include?(guess.guess))
         lives = lives - 1
       end
     end
@@ -31,7 +31,7 @@ module GamesHelper
   def won?
     # access game db and save false in the won loss column
     # change the db boolean from loss to won 
-    secret = @game.word.word
+    secret = @game.word
     guess = @game.guesses.pluck(:guess)
 
     secret.chars.map.all? do |char|

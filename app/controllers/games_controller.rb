@@ -37,6 +37,6 @@ class GamesController < ApplicationController
 
   def randomly_choose_word
     words = Word.all
-    @word = words.sample
+    @word = words.sample.word
   end
 end

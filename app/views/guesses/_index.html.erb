@@ -2,7 +2,7 @@
 
 : <% @game.guesses.each do |guess| %>
  <%= guess.guess %>
- <% if @game.word.word.include?(guess.guess)%>
+ <% if @game.word.include?(guess.guess)%>
       +
       <% else %>
       -
