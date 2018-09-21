@@ -22,13 +22,13 @@ fixtures :games, :guesses, :words
   end
 
   describe "POST #create" do
-    let!(:word) {words(:w1).word}
+    # let!(:word) {Word.create(word: 'exmple')}
     context "when a user adds a new word" do
       it "the word gets saved to the DB" do
-        
-          word = Word.new
+          params = {:word => {:word => 'example'}}
+          # word = Word.new(params)
 
-          expect{post(:create, :params => {:word => {word: word}})}.to change(Word, :count).by(1)
+          expect{post(:create, :params => params)}.to change(Word, :count).by(1)
           
       end
       
@@ -43,12 +43,18 @@ fixtures :games, :guesses, :words
   end
 
   describe "DELETE #destroy" do
-    let!(:word) {words(:w1).word}
+    
     context "when a user removes a word" do
       it "deletes it from data base" do
-        #don't know why this passes what is wors.to_params doing
-        params = {:id => words.to_param }
-        expect{delete :destroy, params: params}.to change(Word, :count).by(-1)
+        #don't know why this passes what is words.to_params doing
+        word = Word.create!(word: "example" )
+        word2 = Word.create!(word: "example_2" )
+
+        # deleted_word = word.destroy
+
+        params = {:id => word.to_param }
+
+        expect{delete :destroy, :params => params}.to change{Word.count}.by(-1)
 
       end
 
